@@ -9,9 +9,25 @@
 #import "ViewController.h"
 #import "NoStatusBarImagePickerController.h"
 
-@interface ViewController ()
+#define USE_CATEGORY 0
+
+#if USE_CATEGORY
+
+@implementation UIImagePickerController (HideStatusBar)
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden
+{
+    return nil;
+}
 
 @end
+
+#endif
 
 @implementation ViewController
 
